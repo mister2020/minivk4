@@ -85,31 +85,32 @@ function App() {
       if (points === 8) return true;
     }
 
-    function startBit () {
+     function startBit () {
       stop_bit = false;
       let i = 0;
-      let timerId = setInterval(() => {
+      let timerId = setInterval(async() => {
         if (stop_bit === true){
           clearInterval(timerId)
           console.log('STOPBIT')
         }
+
         
-        if (i === 0 && todos[0].completed === true){bridge.send("VKWebAppFlashSe1tLevel", {"level": 1})}
-        bridge.send("VKWebAppFlashSetLevel", {"level": 0})
-        if (i === 1 && todos[1].completed === true){bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
-        bridge.send("VKWebAppFlashSetLevel", {"level": 0})
-        if (i === 2 && todos[2].completed === true){bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
-        bridge.send("VKWebAppFlashSetLevel", {"level": 0})
-        if (i === 3 && todos[3].completed === true){bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
-        bridge.send("VKWebAppFlashSetLevel", {"level": 0})
-        if (i === 4 && todos[4].completed === true){bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
-        bridge.send("VKWebAppFlashSetLevel", {"level": 0})
-        if (i === 5 && todos[5].completed === true){bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
-        bridge.send("VKWebAppFlashSetLevel", {"level": 0})
-        if (i === 6 && todos[6].completed === true){bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
-        bridge.send("VKWebAppFlashSetLevel", {"level": 0})
-        if (i === 7 && todos[7].completed === true){bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
-        bridge.send("VKWebAppFlashSetLevel", {"level": 0})
+        if (i === 0 && todos[0].completed === true){await bridge.send("VKWebAppFlashSe1tLevel", {"level": 1})}
+        await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
+        if (i === 1 && todos[1].completed === true){await bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
+        await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
+        if (i === 2 && todos[2].completed === true){await bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
+        await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
+        if (i === 3 && todos[3].completed === true){await bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
+        await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
+        if (i === 4 && todos[4].completed === true){await bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
+        await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
+        if (i === 5 && todos[5].completed === true){await bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
+        await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
+        if (i === 6 && todos[6].completed === true){await bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
+        await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
+        if (i === 7 && todos[7].completed === true){await bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
+        await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
 
         i++;
         if (i === 8) {i = 0};
