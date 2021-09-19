@@ -26,10 +26,31 @@ import {
 import "@vkontakte/vkui/dist/vkui.css";
 import bridge from '@vkontakte/vk-bridge'
 
+bridge.send("VKWebAppInit", {}); 
+bridge.subscribe((e) => console.log(e));
+
+bridge.send("VKWebAppInit", {});
+
+if (bridge.supports("VKWebAppResizeWindow")) {
+    bridge.send("VKWebAppResizeWindow", {"width": 800, "height": 1000});
+}
 
 function App() {
   const { viewWidth } = useAdaptivity();
   const [popout, setPopout] = React.useState(null);
+
+  bridge
+  .send('VKWebAppFlashGetInfo')
+  .then(data => {
+    if (data.is_available === true) {
+      console.log('Supported.')
+    } else {
+      console.log('Not supported.')
+    }
+  })
+  .catch(error => {
+    console.log(error);
+  });
 
   const [todos] = React.useState([
     {id: 1, completed: false},
@@ -95,22 +116,53 @@ function App() {
         }
 
         
-        if (i === 0 && todos[0].completed === true){await bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
-        await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
-        if (i === 1 && todos[1].completed === true){await bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
-        await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
-        if (i === 2 && todos[2].completed === true){await bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
-        await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
-        if (i === 3 && todos[3].completed === true){await bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
-        await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
-        if (i === 4 && todos[4].completed === true){await bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
-        await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
-        if (i === 5 && todos[5].completed === true){await bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
-        await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
-        if (i === 6 && todos[6].completed === true){await bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
-        await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
-        if (i === 7 && todos[7].completed === true){await bridge.send("VKWebAppFlashSetLevel", {"level": 1})}
-        await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
+        if (i === 0 && todos[0].completed === true){
+          await bridge.send("VKWebAppFlashSetLevel", {"level": 1})
+        } else {
+          await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
+        }
+        
+        if (i === 1 && todos[1].completed === true){
+          await bridge.send("VKWebAppFlashSetLevel", {"level": 1})
+        } else {
+          await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
+        }
+        
+        if (i === 2 && todos[2].completed === true){
+          await bridge.send("VKWebAppFlashSetLevel", {"level": 1})
+        } else {
+          await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
+        }
+        
+        if (i === 3 && todos[3].completed === true){
+          await bridge.send("VKWebAppFlashSetLevel", {"level": 1})
+        } else {
+          await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
+        }
+        
+        if (i === 4 && todos[4].completed === true){
+          await bridge.send("VKWebAppFlashSetLevel", {"level": 1})
+        } else {
+          await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
+        }
+        
+        if (i === 5 && todos[5].completed === true){
+          await bridge.send("VKWebAppFlashSetLevel", {"level": 1})
+        } else {
+          await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
+        }
+        
+        if (i === 6 && todos[6].completed === true){
+          await bridge.send("VKWebAppFlashSetLevel", {"level": 1})
+        } else {
+          await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
+        }
+        
+        if (i === 7 && todos[7].completed === true){
+          await bridge.send("VKWebAppFlashSetLevel", {"level": 1})
+        } else {
+          await bridge.send("VKWebAppFlashSetLevel", {"level": 0})
+        }
 
         i++;
         if (i === 8) {i = 0};
