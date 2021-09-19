@@ -6,6 +6,8 @@
 
 Тестировалось на android устройствах
 
+В консоли можно увидеть: "Supported" - если приложение поддерживается на вашем устройстве, "Not supported" - не поддерживается.
+
 DEMO: https://mister2020.github.io/minivk4/
 MiniApp vk: https://vk.com/app7955298_539557764
 
